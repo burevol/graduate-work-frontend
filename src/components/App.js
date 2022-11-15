@@ -1,9 +1,8 @@
-import Test from "./test";
-import '../styles/App.css';
+import Navigation from "./navbar";
 
 function App() {
     return (
-        <Test/>
+        <Navigation/>
         );
 }
 

@@ -1,54 +1,36 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-var LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
-const path = require('path');
-
-options = {
-  '*.css': 'text/css',
-  '*.js': 'text/javascript',
-  '*.png': 'image/png',
-  '*.jpg': 'image/jpeg',
-  '*.jpeg': 'image/jpeg',
-  '*.gif': 'image/gif',
-  '*.webp': 'image/webp',
-  '*.bmp': 'image/bmp',
-};
+const path = require('path')
 
 module.exports = {
-  entry: './src/index.js',
   mode: 'development',
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    port: 3000,
+    open: true,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader"
         }
       },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+    ],
   },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-  },
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'index_bundle.js',
-  },
-  plugins: [
-    new HtmlWebpackPlugin(
-      {
-        filename: path.join(__dirname, './dist/index.html'),
-        hash: false,
-        inject: 'body',
-        showErrors: false,
-        template: path.join(__dirname, "./index.html")
-      }),
-    new LinkTypePlugin(options),
-  ],
-};
+}
