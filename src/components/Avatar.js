@@ -2,12 +2,15 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Avatar } from "flowbite-react";
-import { fetchProfile } from "./store/slice";
+import { fetchProfile } from "./store/userSlice";
 
 
 function AvatarField() {
-    const img = useSelector((state) => state.videoData.img);
+
+    const img = useSelector((state) => state.storageData.users.img);
     const dispatch = useDispatch();
+
+  
 
     useEffect(() => {
         dispatch(fetchProfile());

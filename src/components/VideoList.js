@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import Video from './Video';
-import { fetchVideo } from "./store/slice";
+import { fetchVideo } from "./store/videoSlice";
 
 function VideoList() {
-    const videos = useSelector((state) => state.videoData.videos);
+    const videos = useSelector((state) => state.storageData.videos.videos);
     const dispatch = useDispatch();
 
     useEffect(() => {
