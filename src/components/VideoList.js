@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import Video from './Video';
 import { fetchVideo } from "./store/videoSlice";
 
@@ -12,8 +12,7 @@ function VideoList() {
     }, [dispatch]);
 
     const videoFragment = videos.map((videoCard) => 
-            <Video key={videoCard.id} preview={videoCard.preview} header={videoCard.header} date={videoCard.date} author={videoCard.author} />
-    
+            <Video key={videoCard.id} preview={videoCard.preview} header={videoCard.header} date={videoCard.date} author={videoCard.author} videoId={videoCard.id} />
     );
 
     return (

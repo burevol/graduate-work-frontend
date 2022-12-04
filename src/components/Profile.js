@@ -2,8 +2,8 @@ import { Card } from "flowbite-react";
 import { useSelector } from 'react-redux'
 
 function Profile() {
-    const img = useSelector((state) => state.videoData.img)
-    const username = useSelector((state) => state.videoData.username)
+    const img = useSelector((state) => state.storageData.users.img)
+    const username = useSelector((state) => state.storageData.users.username)
     return (
         <div className="container mx-auto">
             <Card imgSrc={img}>

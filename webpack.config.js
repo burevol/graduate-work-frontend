@@ -8,9 +8,12 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'),
+    static: [{
+      directory: path.resolve(__dirname, 'dist'), 
     },
+    {
+      directory: path.resolve(__dirname, 'dist/video')
+    }],
     port: 3000,
     open: true,
     hot: true,

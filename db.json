@@ -5,41 +5,48 @@
       "header": "Видео 1",
       "author": "User1",
       "preview": "./Pict1.png",
-      "date": "22.11.2022"
+      "date": "22.11.2022",
+      "link": "./sample-5s.mp4"
     },
     {
       "id": 2,
       "header": "Видео 2",
       "author": "User2",
       "preview": "./Pict2.png",
-      "date": "22.11.2022"
+      "date": "22.11.2022",
+      "link": "./sample-10s.mp4"
     },
     {
       "id": 3,
       "header": "Видео 3",
       "author": "User3",
       "preview": "./Pict3.png",
-      "date": "22.11.2022"
+      "date": "22.11.2022",
+      "link": "./sample-15s.mp4"
     }
   ],
   "comments": [
     {
       "id": 1,
+      "author": "User1",
       "body": "some comment 1",
       "videoId": 1
     },
     {
       "id": 2,
+      "author": "User2",
       "body": "some comment 2",
       "videoId": 1
     },
     {
       "id": 3,
+      "author": "User2",
       "body": "some comment 3",
       "videoId": 2
     },
     {
       "id": 4,
+      "author": "User2",
       "body": "some comment 4",
       "videoId": 3
     }

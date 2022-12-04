@@ -8,7 +8,7 @@ export const commentSlice = createSlice({
     },
     reducers: {
         commentSuccess: (state, action) => {
-            comments = action.payload;
+           state.comments = action.payload;
         },
     },
 })
@@ -19,7 +19,7 @@ export default commentSlice.reducer
 
 export const fetchComments = (videoId) => async dispatch => {
     try {
-        await api.get(`/profile/${videoId}`)
+        await api.get(`/comments?videoId=${videoId}`)
             .then((response) => dispatch(commentSuccess(response.data)))
     }
     catch (e) {
