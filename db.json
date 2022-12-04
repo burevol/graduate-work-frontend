@@ -1,0 +1,36 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "header": "Видео 1",
+      "author": "User1",
+      "preview": "./Pict1.png",
+      "date": "22.11.2022"
+    },
+    {
+      "id": 2,
+      "header": "Видео 2",
+      "author": "User2",
+      "preview": "./Pict2.png",
+      "date": "22.11.2022"
+    },
+    {
+      "id": 3,
+      "header": "Видео 3",
+      "author": "User3",
+      "preview": "./Pict3.png",
+      "date": "22.11.2022"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "username": "typicode",
+    "img": "./avatar.png"
+  }
+}
