@@ -12,7 +12,7 @@ function VideoList() {
     }, [dispatch]);
 
     const videoFragment = videos.map((videoCard) => 
-            <Video key={videoCard.id} preview={videoCard.preview} header={videoCard.header} date={videoCard.date} author={videoCard.author} videoId={videoCard.id} />
+            <Video key={videoCard.id} info={videoCard} />
     );
 
     return (

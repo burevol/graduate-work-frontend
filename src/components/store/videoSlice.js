@@ -9,11 +9,15 @@ export const videoSlice = createSlice({
     reducers: {
         videoSuccess: (state, action) => {
             state.videos = action.payload;
+        },
+        like: (state, action) => {
+            const item = state.videos.find(video => video.id === action.payload)
+            item.likes++;
         }
     },
 });
 
-const { videoSuccess } = videoSlice.actions
+const { videoSuccess, like } = videoSlice.actions
 
 export default videoSlice.reducer
 
@@ -27,4 +31,8 @@ export const fetchVideo = () => async dispatch => {
     catch (e) {
         return console.error(e.message);
     }
+}
+
+export const likeVideo = (id) => async dispatch => {
+    dispatch(like(id))
 }

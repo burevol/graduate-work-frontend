@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Spinner } from 'flowbite-react';
+import { TextInput, Button } from 'flowbite-react';
 import Comment from './Comment';
-import { fetchComments } from "./store/commentSlice";
-import { fetchVideoFile } from './store/videoFileSlice';
+import { fetchComments, addComment } from "./store/commentSlice";
+import VideoInfo from "./VideoInfo";
 
-function VideoPage(props) {
+function VideoPage() {
 
+    const inputRef = useRef(null);
     const params = useParams();
+    const videos = useSelector((state) => state.storageData.videos.videos);
+    console.log(videos)
+    const item = videos.find(video => video.id === parseInt(params.id));
+    console.log(item)
+
     const comments = useSelector((state) => state.storageData.comments.comments);
-    const link = useSelector((state) => state.storageData.videoFile.link);
-    const loaded = useSelector((state) => state.storageData.videoFile.loaded);
     const dispatch = useDispatch();
 
 
 
     useEffect(() => {
-        dispatch(fetchVideoFile(params.id))
         dispatch(fetchComments(params.id));
     }, [dispatch]);
 
@@ -25,24 +28,37 @@ function VideoPage(props) {
         <Comment key={comment.id} author={comment.author} body={comment.body} />
     );
 
+    function handleClick() {
+        dispatch(addComment("User1", inputRef.current.value, params.id));
+        inputRef.current.value = "";
+      }
+
     return (
         <div className="container mx-auto">
             {
-                loaded
-                    ?
-                    <div>
-                        <video autoPlay controls>
-                            <source src={link} type="video/mp4" />
-                        </video>
-                        <div className="container mx-auto">
-                            {commentsFragment}
-                        </div>
+
+                <div>
+                    <video autoPlay controls>
+                        <source src={item.link} type="video/mp4" />
+                    </video>
+                    <VideoInfo info={item} />
+                    <div className="container mx-auto px-3">
+                        {commentsFragment}
                     </div>
-                    :
-                    <Spinner
-                        color="info"
-                        aria-label="Info spinner example"
-                    />
+                    <div className='flex'>
+                        <TextInput
+                            className='px-3'
+                            id="comment"
+                            type="text"
+                            placeholder="Оставьте комментарий"
+                            ref={inputRef}
+                        />
+                        <Button onClick={handleClick}>
+                            Ок
+                        </Button>
+                    </div>
+                </div>
+
             }
         </div>
     )
