@@ -12,7 +12,7 @@ export default function Navigation() {
     >
       <Navbar.Brand href="#">
         <img
-          src="./icon.png"
+          src="/icon.png"
           className="mr-3 h-6 sm:h-9"
           alt="Flowbite Logo"
         />
