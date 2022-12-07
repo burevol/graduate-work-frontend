@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Video from './Video';
 import { fetchVideo } from "./store/videoSlice";
 
-function VideoList() {
+function VideoList(props) {
     const videos = useSelector((state) => state.storageData.videos.videos);
     const dispatch = useDispatch();
 
@@ -11,13 +11,18 @@ function VideoList() {
         dispatch(fetchVideo());
     }, [dispatch]);
 
-    const videoFragment = videos.map((videoCard) => 
+    const videoFragment = (props.user === null ?
+        videos.map((videoCard) =>
             <Video key={videoCard.id} info={videoCard} />
-    );
+        )
+        :
+        videos.filter(video => video.author === props.user).map((videoCard) =>
+            <Video key={videoCard.id} info={videoCard} />
+        ));
 
     return (
         <div className="container mx-auto flex flex-wrap gap-2">
-            {videoFragment}   
+            {videoFragment}
         </div>
     )
 }

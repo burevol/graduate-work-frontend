@@ -1,9 +1,17 @@
 import { Card, Button } from "flowbite-react";
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigation from './Navbar'
 
 function Profile() {
+
+    function showVideoByUser(user) {
+        navigate({
+            pathname:'/',
+            search: `?author=${user}`})
+    }
+
+    const navigate = useNavigate();
     const img = useSelector((state) => state.storageData.users.img)
     const username = useSelector((state) => state.storageData.users.username)
     return (
@@ -20,7 +28,7 @@ function Profile() {
                 <div>
                     <div className="flex flex-col gap-2 btn-group">
                         <div>
-                            <Button className="w-1/4">
+                            <Button className="w-1/4" onClick={() => {showVideoByUser(username)}}>
                                 Видео пользователя
                             </Button>
                         </div>
