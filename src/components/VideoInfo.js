@@ -11,14 +11,16 @@ function VideoInfo(props) {
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {props.info.header}
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
-                    {props.info.author}
-                </p>
+                <Link to={`/user/${props.info.author}`}>
+                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                        {props.info.author}
+                    </p>
+                </Link>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                     {props.info.date}
                 </p>
             </Link>
-        </div>
+        </div >
     );
 }
 

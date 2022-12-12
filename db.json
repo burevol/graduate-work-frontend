@@ -54,6 +54,21 @@
       "videoId": 3
     }
   ],
+  "users": [
+    {
+      "username": "User1",
+      "img": "/avatar.png"
+    },
+    {
+      "username": "User2",
+      "img": "/avatar.png"
+    },
+    {
+      "username": "User3",
+      "img": "/avatar.png"
+    }
+  ],
+
   "profile": {
     "username": "User1",
     "img": "/avatar.png"

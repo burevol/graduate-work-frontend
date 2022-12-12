@@ -14,6 +14,7 @@ function App() {
             <Route path='/profile' element={<Profile/>} />
             <Route path='/video/:id' element={<VideoPage/>} />
             <Route path='/profile/upload' element={<UploadForm/>} />
+            <Route path='/user/:user' element={<Profile />} />
           </Routes>
       </div>
     );

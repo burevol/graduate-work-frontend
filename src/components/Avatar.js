@@ -8,6 +8,7 @@ import { fetchProfile } from "./store/userSlice";
 function AvatarField() {
 
     const img = useSelector((state) => state.storageData.users.img);
+    const username = useSelector((state) => state.storageData.users.username);
     const dispatch = useDispatch();
 
   
@@ -17,7 +18,7 @@ function AvatarField() {
         }, [dispatch]);
 
     return (<div className="flex flex-wrap gap-2">
-        <Link to="/profile">
+        <Link to={`/user/${username}`}>
         <Avatar
             img={img}
             rounded={true}

@@ -5,10 +5,11 @@ import VideoList from './VideoList';
 function Main() {
     const [searchParams] = useSearchParams();
     const user = searchParams.get('author');
+    const search = searchParams.get('search')
     return (
         <div>
             <Navigation />
-            <VideoList user={user} />
+            <VideoList user={user} search={search} />
         </div>
     );
 }
