@@ -1,24 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Avatar } from "flowbite-react";
-import { fetchProfile } from "./store/userSlice";
+import { api } from './api/user_api'
 
+function AvatarField({user}) {
 
-function AvatarField() {
-
-    const img = useSelector((state) => state.storageData.users.img);
-    const username = useSelector((state) => state.storageData.users.username);
-    const dispatch = useDispatch();
-
-  
+    const currentUser = useSelector((state) => state.storageData.users.username)
+    const [img, setImg] = useState('');
 
     useEffect(() => {
-        dispatch(fetchProfile());
-        }, [dispatch]);
+        try {
+            api.get(`/users?username=${user}`)
+                .then((response) => {
+                    if (user === '') {
+                        setImg("")
+                    } else {
+                        setImg(response.data[0].img)
+                    }
+                    
+                })
+        }
+        catch (e) {
+            return console.error(e.message);
+        }
+     }, [currentUser]);
 
     return (<div className="flex flex-wrap gap-2">
-        <Link to={`/user/${username}`}>
+        <Link to={`/user/${user}`}>
         <Avatar
             img={img}
             rounded={true}

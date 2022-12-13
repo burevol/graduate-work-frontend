@@ -7,6 +7,9 @@ import { fetchProfile } from "./store/userDataSlice";
 
 function Profile() {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     function showVideoByUser(user) {
         navigate({
             pathname: '/',
@@ -14,43 +17,59 @@ function Profile() {
         })
     }
     const params = useParams();
-    
+
     useEffect(() => {
-        console.log(params.user)
         dispatch(fetchProfile(params.user));
-        }, [dispatch, params.user]);
+    }, [dispatch, params.user]);
 
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-  
+
+
     const img = useSelector((state) => state.storageData.profileData.img)
     const username = useSelector((state) => state.storageData.profileData.username)
     const currentUser = useSelector((state) => state.storageData.users.username)
 
     const userVideoButton = <div>
-        <Button className="w-1/4" onClick={() => { showVideoByUser(params.user) }}>
+        <Button className='w-48' onClick={() => { showVideoByUser(params.user) }}>
             Видео пользователя
         </Button>
     </div>;
 
+    const SubscribeButton = <div>
+        <Link to={`/subscribe/${username}`}>
+            <Button className='w-48'>
+                Подписаться
+            </Button>
+        </Link>
+    </div>
+
+    const ViewSubscribeButton = <div>
+        <Link to={"/my_subscribes"}>
+            <Button className='w-48'>
+                Мои подписки
+            </Button>
+        </Link>
+    </div>
+
     const uploadVideoButton = <div>
         <Link to='/profile/upload'>
-            <Button className="w-1/4">
+            <Button className='w-48'>
                 Загрузить видео
             </Button>
         </Link>
     </div>
 
     const chatButton = <div>
-        <Button className="w-1/4">
-            Чат с пользователем
-        </Button>
+        <Link to={`/chat/${username}`}>
+            <Button className='w-48'>
+                Чат с пользователем
+            </Button>
+        </Link>
     </div>
 
     const logoutButton = <div>
         <Link to='/logout'>
-            <Button className="w-1/4">
+            <Button className='w-48'>
                 Выход
             </Button>
         </Link>
@@ -72,7 +91,9 @@ function Profile() {
                     <div className="flex flex-col gap-2 btn-group">
                         {userVideoButton}
                         {currentUser === params.user ? uploadVideoButton : ""}
+                        {currentUser === params.user ? ViewSubscribeButton : ""}
                         {currentUser !== params.user ? chatButton : ""}
+                        {currentUser !== params.user ? SubscribeButton : ""}
                         {currentUser === params.user ? logoutButton : ""}
                     </div>
                 </div>

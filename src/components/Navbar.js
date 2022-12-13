@@ -1,9 +1,11 @@
 import React from "react";
 import { Navbar } from "flowbite-react";
+import { useSelector, useDispatch } from 'react-redux'
 import SearchField from "./search"
 import AvatarField from "./Avatar";
 
 export default function Navigation() {
+  const currentUser = useSelector((state) => state.storageData.users.username)
   return (
     <Navbar
       fluid={true}
@@ -21,7 +23,7 @@ export default function Navigation() {
         </span>
       </Navbar.Brand>
       <SearchField></SearchField>
-      <AvatarField></AvatarField>
+      <AvatarField user={currentUser} ></AvatarField>
     </Navbar>
 
   )
