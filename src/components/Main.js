@@ -3,6 +3,7 @@ import Navigation from './Navbar'
 import VideoList from './VideoList';
 
 function Main() {
+    
     const [searchParams] = useSearchParams();
     const user = searchParams.get('author');
     const search = searchParams.get('search')

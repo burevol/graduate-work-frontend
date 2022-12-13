@@ -22,9 +22,6 @@ function Profile() {
         dispatch(fetchProfile(params.user));
     }, [dispatch, params.user]);
 
-
-
-
     const img = useSelector((state) => state.storageData.profileData.img)
     const username = useSelector((state) => state.storageData.profileData.username)
     const currentUser = useSelector((state) => state.storageData.users.username)
@@ -74,7 +71,6 @@ function Profile() {
             </Button>
         </Link>
     </div>
-
 
     return (
         <div>

@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { likeVideo} from "./store/videoSlice";
 
 function LikesCount(props) {
+    
     const dispatch = useDispatch();
     
     function doLike(id) {

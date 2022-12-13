@@ -18,11 +18,9 @@ function VideoPage() {
     const comments = useSelector((state) => state.storageData.comments.comments);
     const dispatch = useDispatch();
 
-
-
     useEffect(() => {
         dispatch(fetchComments(params.id));
-    }, [dispatch]);
+    }, [dispatch, params.id]);
 
     const commentsFragment = comments.map((comment) =>
         <Comment key={comment.id} author={comment.author} body={comment.body} />
@@ -31,12 +29,11 @@ function VideoPage() {
     function handleClick() {
         dispatch(addComment("User1", inputRef.current.value, params.id));
         inputRef.current.value = "";
-      }
+    }
 
     return (
         <div className="container mx-auto">
             {
-
                 <div>
                     <video autoPlay controls>
                         <source src={item.link} type="video/mp4" />
@@ -58,7 +55,6 @@ function VideoPage() {
                         </Button>
                     </div>
                 </div>
-
             }
         </div>
     )

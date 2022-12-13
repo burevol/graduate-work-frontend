@@ -13,7 +13,6 @@ function SearchField() {
     const navigate = useNavigate();
     const searchRef = useRef();
     return (
-
         <form onSubmit={handleSubmit}>
             <div className="flex">
                 <div className="relative w-full">

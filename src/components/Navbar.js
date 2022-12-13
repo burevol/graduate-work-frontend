@@ -1,10 +1,11 @@
 import React from "react";
 import { Navbar } from "flowbite-react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import SearchField from "./search"
 import AvatarField from "./Avatar";
 
 export default function Navigation() {
+  
   const currentUser = useSelector((state) => state.storageData.users.username)
   return (
     <Navbar

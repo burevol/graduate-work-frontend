@@ -11,7 +11,6 @@ function OtherMessage({  user, message  }) {
                 
             </div>
         )
-   
 }
 
 export default OtherMessage;

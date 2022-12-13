@@ -2,13 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from './Navbar'
 
 function UploadForm() {
-    
+
     const navigate = useNavigate();
 
     function uploadFile() {
         navigate("/profile")
     }
-    
+
     return (
         <div>
             <Navigation />
@@ -26,7 +26,6 @@ function UploadForm() {
             </div>
         </div>
     )
-
 }
 
 export default UploadForm;
